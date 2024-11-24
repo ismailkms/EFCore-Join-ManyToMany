@@ -1,0 +1,27 @@
+﻿@model LessonAssignSendModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="mt-3" asp-action="AssignLesson" asp-controller="Student" method="post">
+
+    <input type="hidden" asp-for="@Model.StudentId" />
+
+    <ul class="list-group">
+        @for (int i = 0; i < Model.Lessons.Count; i++) //Burada foreach ile @Model.Roles'de dönersek modelin içini nasıl dolduracağını bilmeyeceğinden dolayı rolleri boş gönderir. Bu nedenle for ile dönmeliyiz. Foreach ile yazacağımız @role.Name ile for ile yazacağımız @Model.Roles[i].Name bir değildir. Foreach ile yazılan post edilince model'e gitmez.
+        {
+            <input type="hidden" asp-for="@Model.Lessons[i].Name" />
+            <input type="hidden" asp-for="@Model.Lessons[i].LessonId" />
+            <li class="list-group-item">
+                <input class="form-check-input me-1" asp-for="@Model.Lessons[i].Exist" id="@Model.Lessons[i].Name">
+                <label class="form-check-label stretched-link" for="@Model.Lessons[i].Name">@Model.Lessons[i].Name</label>
+            </li>
+        }
+    </ul>
+
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+
+</form>

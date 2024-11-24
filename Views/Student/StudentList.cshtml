@@ -1,0 +1,38 @@
+﻿@model List<Student>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Adı Soyadı</th>
+                <th scope="col">Dersler</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.NameSurname</td>
+                    <td>
+                        @foreach (var lesson in student.Lessons)
+                        {
+                            <span>@lesson.Name </span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="AssignLesson" asp-controller="Student" asp-route-studentId="@student.Id" class="btn btn-danger">Ders Ata</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
