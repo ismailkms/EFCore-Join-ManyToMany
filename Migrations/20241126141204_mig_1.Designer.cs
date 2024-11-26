@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore_Join_ManyToMany.Migrations
 {
     [DbContext(typeof(JoinDbContext))]
-    [Migration("20241124161054_mig_1")]
+    [Migration("20241126141204_mig_1")]
     partial class mig_1
     {
         /// <inheritdoc />
